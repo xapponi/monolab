@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en">
+
+<!-- Head -->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Monolab Inc.</title>
+
+    <script
+    src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <script src="js/app.js"></script>
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="app.css">
+
+    <!-- AJAX for Form -->
+    <script>
+    function _(id) {return document.getElementById(id);}
+    function submitForm () {
+      _("mybtn").disabled = true;
+      _("status").innerHTML = 'please wait ... ';
+      var formdata = new FormData();
+      formdata.append("n", _("n").value);
+      formdata.append("e", _("e").value);
+      formdata.append("m", _("m").value);
+      var ajax = new XMLHttpRequest();
+      ajax.open("POST", "process.php");
+      ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+          if (ajax.responseText == "success") {
+            _("my_form").innerHTML = '<h2>Thanks ' + _("n").value + ', your message has been sent.</h2>';
+          }
+          else {
+            _("status").innerHTML = ajax.responseText;
+            _("mybtn").disabled = false;
+          }
+        }
+      }
+      ajax.send(formdata);
+    }
+    </script>
+  </head>
+
+<!-- Body -->
+  <body >
+    <div class="container">
+
+<!--[if IE 8]><div class="ie"><![endif]-->
+      <div class="inner">
+        <div class="hexagon hexagon2 b rowOne"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div>
+
+        <div class="hexagon hexagon2 d rowOne"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div>
+
+        <div class="hexagon hexagon2 a rowTwo"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div>
+
+        <div class="hexagon hexagon2 c rowTwo"><div class="hexagon-in1"><div class="hexagon-in2-home"></div></div></div>
+
+        <div class="hexagon hexagon2 e rowTwo"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div>
+
+        <div class="hexagon hexagon2 b rowThree"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div>
+
+        <div class="hexagon hexagon2 d rowThree"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div>
+      </div>
+  <!--[if IE 8]></div><![endif]-->
+
+    </div>
+  </body>
+</html>
